@@ -19,7 +19,7 @@ Of course any 3D tool could be used as long as it supports .obj file.
 The tutorial below is designed as a quick start to import data from the Shriveling App and effectively organize your scene in Blender[^version].
 
 
-## Step by step [(ooh 🔊)](https://www.youtube.com/watch?v=iCrargw1rrM)
+## Step by step 
 
 #### Export from Shriveling world
 
