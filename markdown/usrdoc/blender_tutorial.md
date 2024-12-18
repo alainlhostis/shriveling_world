@@ -160,7 +160,9 @@ Cones have complex geometry at the base that are complicating any operation on t
 3. Combine the cones into a single, simplified shape
     - Select a cone by mouse click
     - Select all the other cones
-    - Use the _BoolTool_ function from the menu __Object__, __BoolTool__, __Union__ 
+    - Use the _BoolTool_ function from the menu __Object__, __Boolean__, __Union__ (Boolean is on the bottom of the __Object__ menu)
+  
+BoolTool is an addon, installed from the [BoolTool website](https://extensions.blender.org/add-ons/bool-tool/).
 
 ###### Simplify cones : Method 2 : Booleans <small>(Needs at least version 2.91)</small>
 Cones have complex geometry at the base that are complicating any operation on the geometry in Blender. Hence the need to remove it. Fortunately at present cones have a tiny cylindrical bottom that we may cut in a sort of _slice_. The cutting surface must be as close as possible to the upper part of last cylindric part, so as to encompass the complex bottom part of the cones.
