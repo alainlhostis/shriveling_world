@@ -256,7 +256,7 @@ Let’s remove those vertex in Blender.
 4. Select all the vertices located at the World Origin with the _Select Box_ tool.
 5. Delete them (Press **X** then **Enter**)
 
-#### Move objects to denter of the grid
+#### Move objects to center of the grid
 
 Once the geometry is in desired shape it is convenient to move the objects to the center of the _Blender_ __World__.
 To do so:
