@@ -191,6 +191,6 @@ _speedKPH_|number|__yes__|commercial average speed on the transport network
 
 The GEOJSON file is needed to cut the cones at the limits of the shores or at the limits of a country or region.
 
-**The GEOJSON fils must be in the projection EPSG:4326** i.e. coordinates lat lon WGS84
+**The GEOJSON file must be in the projection EPSG:4326** i.e. coordinates latitudes longitudes WGS84
 
 **CAUTION**: for an unknown reason the GEOJSON file may crash the app; as a workaround use the provided world geojson file.
