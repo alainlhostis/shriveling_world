@@ -178,6 +178,8 @@ For the sake of readability this file usually contains two optional columns of _
 | _name_      | string | __yes__       | mode name                       |
 | _code_      | number | __yes__       | unique id of the transport mode |
 
+The transport modes file **must contain at least two modes, including a mode named 'Road'** that will be considered for the basic geographical time-space surface, id est the cones.
+
 ### Transport mode speeds file
 
 A given transport mode may experience an increase of speed over time, e.g. the five acceleration phases of China classical railways (non High Speed Rail) between 1997 and 2004
