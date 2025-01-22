@@ -131,20 +131,6 @@ The shriveled topology exported as .obj file is composed of individual â€œconesâ
 
 Our intention here is to turn the collection of cones into a single multi-cones surface and remove the unneeded artifacts below the surface.
 
-It is quite hard to keep accurate geometry when trying to model the mesh surface depending of the source file and its complexity. But one method looks promising.
-
-1. In the _Outliner_, duplicate the cones collection (so we can keep track of original cones for comparison later)
-2. <a id="hide"></a>Hide everything but the new working collection by **ctrl-clicking** on the **eye icon** next to it (isolate to optimise the viewport)
-3. [Select all objects](https://docs.blender.org/manual/en/latest/editors/outliner.html#selecting-multiple-data-blocks) (cones) of that new collection. One object must be active (yellow) in the objects selection (orange). It will become the main object
-4. In the _3D Viewport_, join every selected cone meshes in one object (**Ctrl-J** or **Cmd-J** on macOS). You can rename the joined object as you like
-5. Switch to *Sculpt Mode* and use the **[Remesh](https://docs.blender.org/manual/en/latest/modeling/meshes/retopology.html#remeshing)** tool in the top-right corner of the _3D Viewport_ area (the Blender doc about remeshing is unfortunately not up to date). _Voxel Size_ should be 0.1 or less (**Warning**: it could be computational intensive but a lower value gives more details)
-6. Add *Decimate modifier* to lighten the mesh
-
-Make a copy of the cones collection for further use:
-
-1. In the _Outliner_, duplicate the cones collection (so we can keep track of original cones for comparison later). (**right-click** on the collection > *Duplicate Collection*)
-2. Hide everything but the new working collection by **ctrl-clicking** on the **eye icon** next to it (isolate to optimise the viewport)
-
 ###### Simplify cones : Method 1 (replaces the methods 2 an 3)
 Cones have complex geometry at the base that are complicating any operation on the geometry in Blender. Hence the need to remove it. 
 1. Select the bottom vertices
@@ -154,13 +140,18 @@ Cones have complex geometry at the base that are complicating any operation on t
     - Select the top vertices of the cones
     - Extend selection with the menu __Select__, __Select more__
     - Invert selction with the menu __Select__, __Invert__
-2. Merge the bottom verttices in a single point
+2. Merge the bottom vertices in a single point
     - Type __M__ and then __At center__
     - Type __G__ and move down the point so as to generate a buoy like shape
-3. Combine the cones into a single, simplified shape
-    - Select a cone by mouse click
-    - Select all the other cones
+3. [Workaround](https://github.com/nickberckley/bool_tool/issues/34) to prepare the cones before [BoolTool](https://github.com/nickberckley/bool_tool/releases) operations
+    - Select all cones, in __Object mode__
+    - Shift to __Edit mode__, by typing __SHIFT__
+    - Select all nodes by typing __A__
+    - Pres __M__ and then __Merge by distance__
+4. Combine the cones into a single, simplified shape with [BoolTool addon](https://github.com/nickberckley/bool_tool/releases)
+    - Select __only two__ cones by mouse click
     - Use the _BoolTool_ function from the menu __Object__, __Boolean__, __Union__ (Boolean is on the bottom of the __Object__ menu)
+    - Repeat the operation (all cones together [fails with BoolTool v 1.1.3](https://github.com/nickberckley/bool_tool/issues/34))
   
 BoolTool is an addon, installed from the [BoolTool website](https://extensions.blender.org/add-ons/bool-tool/).
 
