@@ -131,7 +131,7 @@ The shriveled topology exported as .obj file is composed of individual â€œconesâ
 
 Our intention here is to turn the collection of cones into a single multi-cones surface and remove the unneeded artifacts below the surface.
 
-###### Simplify cones : Method 1 (replaces the methods 2 an 3)
+###### Simplify cones
 Cones have complex geometry at the base that are complicating any operation on the geometry in Blender. Hence the need to remove it. 
 1. Select the bottom vertices
     - Select all cones, in __Object mode__
@@ -154,43 +154,6 @@ Cones have complex geometry at the base that are complicating any operation on t
     - Repeat the operation (all cones together [fails with BoolTool v 1.1.3](https://github.com/nickberckley/bool_tool/issues/34))
   
 BoolTool is an addon, installed from the [BoolTool website](https://extensions.blender.org/add-ons/bool-tool/).
-
-###### Simplify cones : Method 2 : Booleans <small>(Needs at least version 2.91)</small>
-Cones have complex geometry at the base that are complicating any operation on the geometry in Blender. Hence the need to remove it. Fortunately at present cones have a tiny cylindrical bottom that we may cut in a sort of _slice_. The cutting surface must be as close as possible to the upper part of last cylindric part, so as to encompass the complex bottom part of the cones.
-
-![image](https://user-images.githubusercontent.com/21110817/138483048-c7380630-1b46-4447-b1e0-d4037b371e7f.png)
-*The intersection of the base of the cone and the icosphere; note that the sphere enveloppe is very near to the upper part of the end section of the cone*
-
-You may adjust the diameter of the icosphere on a single cone before showing all the other cones.
-
-The following instructions have been tested in an __un-projected situation__. In the projected situation a simple cube can replace the sphere.
-
-This method keeps the geometry as close as the original sceneCones.obj file. In the Blender Preferences the *Bool Tool* add-on must be activated.
-We add a simple geometry first to help with the boolean operations.
-
-1. Create an Ico Sphere with a radius encompassing the base of the geometry (Press **Shift + A** together, Mesh > Ico Sphere and in the Add Ico Sphere panel: set *Subdivision* to *6* and *Radius* to about *43.2 m*)
-2. Adjust IcoSphere *Radius* so that it intesects with the lower basis of the cones (where tiny vertical triangular faces are visible)
-3. Add Vertex group "Group" to Ico Sphere vertices
-	- Switch to Edit Mode (Press **Tab**)
-	- Select All (Press **A**)
-	- Create a Vertex Group (Object Data Properties Tab)
-	- Click *Assign*
-4. [Select all objects](https://docs.blender.org/manual/en/latest/editors/outliner.html#selecting-multiple-data-blocks) (cones + sphere) of that new collection. The Ico Sphere object must be active (yellow) in the objects selection (orange). It will become the main object.
-5. Use _Bool Tool_ __Union__
-    - Add the addon _Bool Tool_ from the preferences of _Blender_
-    - From menu _Object_ sub menu _Bool Tool_
-    - The process may take significant time
-    - ~~*In case of errors, select a subset of the cones and the Icosphere before executong the _union_*~~ do not work
-6. Add _Mask Modifier_ select the Vertex Group and click the invert icon (<img src="./img/icon_invert@2x.png" alt="Invert Icon Inactive" title="Invert Icon" width="20" height="20" />) next to it to display the cones
-7. You should get the desired surface
-
-###### Simplify cones : Method 3 : Remesh <small>(Could be used before 2.91)</small>
-
-1. In the _Outliner_, duplicate the cones collection (so we can keep track of original cones for comparison later). (**right-click** on the collection > *Duplicate Collection*)
-2. Hide everything but the new working collection by **ctrl-clicking** on the **eye icon** next to it (isolate to optimise the viewport)
-3. [Select all objects](https://docs.blender.org/manual/en/latest/editors/outliner.html#selecting-multiple-data-blocks) (cones) of that new collection. One object must be active (yellow) in the objects selection (orange). It will become the main object.
-4. In the _3D Viewport_, join every  selected cone meshes in one object (**Ctrl-J** or **Cmd-J** on macOS). You can rename the joined object as you like.
-5. Switch to *Sculpt Mode* and use the **[Remesh](https://docs.blender.org/manual/en/latest/modeling/meshes/retopology.html#remeshing)** tool in the top-right corner of the _3D Viewport_ area (the Blender doc about remeshing is unfortunately not up to date). _Voxel Size_ should be 0.1 or less (**Warning**: it could be computational intensive but a lower value gives more details).
 
 #### Clean up countries border volumes
 
